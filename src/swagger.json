@@ -1,0 +1,86 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Users API Documentation",
+        "description": "This is the API documentation",
+        "version": "1.0.0",
+        "contact": {
+            "email": "brunoo.gomes11@gmail.com"
+        }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": ["User"],
+                "summary": "Create a user",
+                "description": "Create a new user",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "example name",
+                                    "email": "example@gmail.com"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201":{
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "admin": {
+                                            "type": "boolean"
+                                        },
+                                        "created_at": {
+                                            "type": "date"
+                                        },
+                                        "updated_at": {
+                                            "type": "date"
+                                        },
+                                        "name": {
+                                            "type":"string"
+                                        },
+                                        "string": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "id": "892f5cf0-8438-4b6c-b36a-335ad99d1682",
+                                        "admin": false,
+                                        "created_at": "2022-10-25T01:00:00.596Z",
+                                        "updated_at": "2022-10-25T01:00:00.596Z",
+                                        "name": "example name",
+                                        "email": "example@gmail.com"
+                                    }
+
+                                }
+                            }
+                        }
+                            
+                    },
+                    "400": {
+                        "description": "Email already exists"
+                    }
+
+                }
+            }
+        }
+    }
+}
