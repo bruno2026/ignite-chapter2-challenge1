@@ -80,7 +80,192 @@
                     }
 
                 }
+            },
+            "get": {
+                "tags": ["User"],
+                "summary": "List all users by ID of user admin",
+                "description": "List all users by ID of user admin",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in":"header",
+                        "description":"ID of user to list",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "559d297e-fc8e-419c-9547-f489ec277a07"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "admin": {
+                                                "type": "boolean"
+                                            },
+                                            "created_at": {
+                                                "type": "date"
+                                            },
+                                            "updated_at": {
+                                                "type": "date"
+                                            },
+                                            "name": {
+                                                "type":"string"
+                                            },
+                                            "string": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "example": {
+                                            "id": "892f5cf0-8438-4b6c-b36a-335ad99d1682",
+                                            "admin": false,
+                                            "created_at": "2022-10-25T01:00:00.596Z",
+                                            "updated_at": "2022-10-25T01:00:00.596Z",
+                                            "name": "example name",
+                                            "email": "example@gmail.com"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "User not found or Admin not found"
+                    }
+                }
+
+            }
+        },
+        "/users/{user_id}": {
+                "get": {
+                    "tags": ["User"],
+                    "summary": "show UserProfile",
+                    "description": "show UserProfile",
+                    "parameters": [
+                        {   
+                            "name": "user_id",
+                            "in":"path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "admin": {
+                                                    "type": "boolean"
+                                                },
+                                                "created_at": {
+                                                    "type": "date"
+                                                },
+                                                "updated_at": {
+                                                    "type": "date"
+                                                },
+                                                "name": {
+                                                    "type":"string"
+                                                },
+                                                "string": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "example": {
+                                                "id": "892f5cf0-8438-4b6c-b36a-335ad99d1682",
+                                                "admin": false,
+                                                "created_at": "2022-10-25T01:00:00.596Z",
+                                                "updated_at": "2022-10-25T01:00:00.596Z",
+                                                "name": "example name",
+                                                "email": "example@gmail.com"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": "User does not exist"
+                        }
+                    }
+    
+                }
+            },
+            "/users/{user_id}/admin": {
+                "patch": {
+                    "tags": ["User"],
+                    "summary": "Turn user admin",
+                    "description": "Turn user admin",
+                    "parameters": [
+                        {   
+                            "name": "user_id",
+                            "in":"path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "admin": {
+                                                    "type": "boolean"
+                                                },
+                                                "created_at": {
+                                                    "type": "date"
+                                                },
+                                                "updated_at": {
+                                                    "type": "date"
+                                                },
+                                                "name": {
+                                                    "type":"string"
+                                                },
+                                                "string": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "example": {
+                                                "id": "892f5cf0-8438-4b6c-b36a-335ad99d1682",
+                                                "admin": false,
+                                                "created_at": "2022-10-25T01:00:00.596Z",
+                                                "updated_at": "2022-10-25T01:00:00.596Z",
+                                                "name": "example name",
+                                                "email": "example@gmail.com"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": "User does not exist"
+                        }
+                    }
+    
+                }
             }
         }
     }
-}
